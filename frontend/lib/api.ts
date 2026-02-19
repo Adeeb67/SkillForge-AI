@@ -64,4 +64,20 @@ export async function askAITutor(question: string) {
 
   return res.json();
 }
+export async function debugCode(code: string) {
+  const token = localStorage.getItem("token");
+
+  const res = await fetch(
+    "http://127.0.0.1:8000/debug-code?code=" +
+      encodeURIComponent(code),
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return res.json();
+}
 
