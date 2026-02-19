@@ -36,3 +36,15 @@ export async function getMe() {
 
   return res.json();
 }
+export async function addXP(amount: number) {
+  const token = localStorage.getItem("token");
+
+  const res = await fetch("http://127.0.0.1:8000/add-xp?amount=" + amount, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+}
