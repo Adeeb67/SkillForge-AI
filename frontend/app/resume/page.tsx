@@ -13,13 +13,16 @@ export default function ResumeUpload() {
     formData.append("file", file);
 
     const res = await fetch(
-     fetch("https://skillforge-ai-y3ru.onrender.com/api/chat"),
+  "https://skillforge-ai-y3ru.onrender.com/api/chat",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ password }),
+  }
+);
 
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
 
     const data = await res.json();
     setStatus(data.message);
