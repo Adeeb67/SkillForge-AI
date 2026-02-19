@@ -1,20 +1,15 @@
-# 🚀 SkillForge-AI — AI Career Intelligence Platform
+# 🚀 SkillForge — AI Learning & Developer Platform
 
-> **An AI-powered career intelligence platform that analyzes resumes, predicts job roles, and simulates real-world hiring intelligence using modern full-stack architecture.**
+> **A modern AI-powered developer learning platform featuring gamified progress tracking, smart debugging tools, and an interactive learning dashboard.**
 
 <p align="center">
 
-![GitHub stars](https://img.shields.io/github/stars/Adeeb67/SkillForge-AI?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/Adeeb67/SkillForge-AI?style=for-the-badge)
-![GitHub repo size](https://img.shields.io/github/repo-size/Adeeb67/SkillForge-AI?style=for-the-badge)
+![Next.js](https://img.shields.io/badge/Frontend-Next.js-black?style=for-the-badge\&logo=next.js)
+![React](https://img.shields.io/badge/Framework-React-blue?style=for-the-badge\&logo=react)
+![TailwindCSS](https://img.shields.io/badge/UI-TailwindCSS-38B2AC?style=for-the-badge\&logo=tailwind-css)
+![FastAPI](https://img.shields.io/badge/Backend-FastAPI-green?style=for-the-badge\&logo=fastapi)
+![Vercel](https://img.shields.io/badge/Deployment-Vercel-black?style=for-the-badge\&logo=vercel)
 ![License](https://img.shields.io/github/license/Adeeb67/SkillForge-AI?style=for-the-badge)
-
-![Python](https://img.shields.io/badge/Backend-FastAPI-blue?style=for-the-badge\&logo=python)
-![React](https://img.shields.io/badge/Frontend-Next.js-black?style=for-the-badge\&logo=next.js)
-![Tailwind](https://img.shields.io/badge/UI-TailwindCSS-38B2AC?style=for-the-badge\&logo=tailwind-css)
-![AI Powered](https://img.shields.io/badge/AI-Powered-purple?style=for-the-badge)
-![Deployment](https://img.shields.io/badge/Deployed-Vercel-black?style=for-the-badge\&logo=vercel)
-![API](https://img.shields.io/badge/API-FastAPI-green?style=for-the-badge)
 
 </p>
 
@@ -22,81 +17,52 @@
 
 ## 🌐 Live Demo
 
-🚀 **Frontend (Live App)**
-👉 https://skillforge-ai.vercel.app
-
-⚡ **Backend API (Render Deployment)**
-👉 https://skillforge-ai-y3ru.onrender.com
-
-📄 **API Documentation (Swagger UI)**
-👉 https://skillforge-ai-y3ru.onrender.com/docs
+🚀 **Application**
+👉 https://skill-forge-ai-neon.vercel.app
 
 ---
 
-## 🧠 Portfolio Positioning
+## 🧠 Project Overview
 
-**SkillForge-AI** is a production-style **AI SaaS platform** built to demonstrate:
-
-* Full-stack system design
-* AI integration into web applications
-* Real-world REST API architecture
-* Authentication workflows
-* Cloud deployment (Vercel + Render)
-* Frontend–Backend communication at scale
-
-This project reflects **industry-level application architecture**, not just a UI prototype.
-
----
-
-## 🌟 Overview
-
-SkillForge-AI helps students and professionals understand how recruitment systems evaluate resumes.
+**SkillForge** is an AI-powered developer learning environment designed to simulate a real-world coding growth ecosystem.
 
 The platform combines:
 
-✅ AI resume analysis
-✅ ATS scoring simulation
-✅ Job role prediction
-✅ Intelligent career assistant
-✅ Modern dashboard experience
+* 📊 Gamified learning dashboard
+* 🧠 AI-assisted debugging workspace
+* 📚 Structured learning modules
+* 🏆 Progress tracking & streak system
+* ⚡ Interactive developer experience
 
-Users can:
-
-* 📄 Upload and analyze resumes
-* 🤖 Chat with an AI Career Assistant
-* 📊 Generate ATS compatibility scores
-* 🎯 Predict suitable job roles
-* 💡 Receive career improvement suggestions
-* 🧠 Generate optimized resumes
+It focuses on **learning productivity**, **skill mastery**, and **developer workflow simulation** rather than static course consumption.
 
 ---
 
-## ✨ Key Features
+## ✨ Core Features
 
-✅ Resume Parsing & Analysis
-✅ ATS (Applicant Tracking System) Scoring
-✅ AI Job Role Prediction
-✅ AI Career Assistant Chat Interface
-✅ Resume Optimization Engine
-✅ Secure Authentication System
-✅ Floating AI Chat Widget
-✅ Modern Dashboard UI
-✅ Real-time API Communication
-✅ Cloud Deployment Ready
+✅ Interactive Learning Dashboard
+✅ Skill Progress & XP Tracking
+✅ Daily Learning Streak System
+✅ Smart Debugger Workspace
+✅ Recommended Learning Modules
+✅ Modern Responsive UI
+✅ Component-Based Architecture
+✅ Real-time Frontend Experience
+✅ Production-style Project Structure
 
 ---
 
 ## 🧱 System Architecture
 
 ```
-Frontend (Next.js / React)
+Client (Next.js App Router)
         │
-        │ REST API Calls
+        │ UI State & API Layer
         ▼
-Backend (FastAPI)
+Frontend Components (React + Tailwind)
         │
         ▼
-AI / NLP Processing Engine
+Backend Services (FastAPI - optional extensions)
 ```
 
 ---
@@ -105,26 +71,22 @@ AI / NLP Processing Engine
 
 ### 🔹 Frontend
 
-* Next.js (App Router)
-* React.js
+* Next.js 14 (App Router)
+* React
+* TypeScript
 * Tailwind CSS
-* TypeScript & JavaScript
-* Component-Based Architecture
+* Component-driven UI
 
-### 🔹 Backend
+### 🔹 Backend (Extensible)
 
-* Python
 * FastAPI
-* Uvicorn
-* SQLite Database
+* Python
 * REST API Architecture
 
-### 🔹 AI Layer
+### 🔹 Deployment
 
-* NLP Resume Analysis
-* AI Career Insight Engine
-* LLM-based Responses
-* Resume Intelligence Logic
+* Vercel (Frontend Hosting)
+* GitHub (Version Control)
 
 ---
 
@@ -133,22 +95,29 @@ AI / NLP Processing Engine
 ```
 SkillForge-AI/
 │
-├── backend/
-│   ├── app/
-│   └── requirements.txt
-│
 ├── frontend/
 │   ├── app/
+│   │   ├── dashboard/
+│   │   ├── learning-studio/
+│   │   ├── smart-debugger/
+│   │   └── settings/
+│   │
 │   ├── components/
 │   └── package.json
 │
+├── backend/
+│   └── app/
+│
 ├── docs/
+│   ├── preview.gif
+│   └── architecture.png
+│
 └── README.md
 ```
 
 ---
 
-## ⚙️ Local Setup Guide
+## ⚙️ Local Setup
 
 ### 1️⃣ Clone Repository
 
@@ -159,33 +128,7 @@ cd SkillForge-AI
 
 ---
 
-### 2️⃣ Backend Setup
-
-```bash
-cd backend
-
-python -m venv .venv
-.venv\Scripts\activate
-
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-```
-
-Backend:
-
-```
-http://127.0.0.1:8000
-```
-
-Docs:
-
-```
-http://127.0.0.1:8000/docs
-```
-
----
-
-### 3️⃣ Frontend Setup
+### 2️⃣ Install Frontend
 
 ```bash
 cd frontend
@@ -193,7 +136,7 @@ npm install
 npm run dev
 ```
 
-Frontend:
+App runs at:
 
 ```
 http://localhost:3000
@@ -201,87 +144,63 @@ http://localhost:3000
 
 ---
 
-## 🔌 API Example
+### 3️⃣ Backend (Optional)
 
-### Request
-
-```http
-POST /analyze-resume
-```
-
-### Response
-
-```json
-{
-  "ats_score": 82,
-  "recommended_role": "Data Analyst",
-  "suggestions": [
-    "Add projects",
-    "Improve keywords"
-  ]
-}
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn app.main:app --reload
 ```
 
 ---
 
-## 📸 Screenshots
+## 📸 Preview
 
-(Add images inside `/docs`)
+(Add later)
 
 ```
-docs/dashboard.png
-docs/ai-chat.png
-docs/analysis-result.png
+docs/preview.gif
 ```
 
 Example:
 
 ```md
-![Dashboard](docs/dashboard.png)
+![Preview](docs/preview.gif)
 ```
 
 ---
 
-## 🚀 Deployment Architecture
+## 🚀 Deployment
 
-| Layer           | Platform        |
-| --------------- | --------------- |
-| Frontend        | Vercel          |
-| Backend         | Render          |
-| API Docs        | FastAPI Swagger |
-| Version Control | GitHub          |
-
----
-
-## 🚨 Known Issues
-
-* First request may be slow (cold start on Render free tier)
-* AI features require backend availability
-* Environment variables must be configured correctly
+| Layer      | Platform |
+| ---------- | -------- |
+| Frontend   | Vercel   |
+| Backend    | FastAPI  |
+| Repository | GitHub   |
 
 ---
 
-## 🔮 Future Roadmap
+## 🎯 Portfolio Positioning
 
-* 🔐 OAuth Login (Google/GitHub)
-* 📊 Resume analytics dashboard
-* 🧠 Advanced ML ranking models
-* ⚡ Streaming AI responses
-* 🐳 Docker deployment
-* ☁️ Scalable cloud infrastructure
+SkillForge demonstrates:
+
+* Modern Frontend Engineering
+* Production UI Architecture
+* Scalable Project Structuring
+* Real-world Dashboard Design
+* Developer Experience Engineering
+
+This project represents a **production-style learning platform**, not a simple UI clone.
 
 ---
 
-## 🎯 Learning Outcomes
+## 🔮 Future Enhancements
 
-This project demonstrates:
-
-* Full-Stack Engineering
-* AI + Web Integration
-* Authentication Systems
-* API Design Principles
-* Production Deployment Workflow
-* Software Architecture Thinking
+* AI Coding Assistant Integration
+* Personalized Learning Paths
+* Live Code Execution Sandbox
+* Leaderboard System
+* Cloud Database Integration
 
 ---
 
@@ -300,8 +219,8 @@ If you like this project:
 
 ⭐ Star the repository
 🍴 Fork it
-🧠 Share feedback
+💡 Share feedback
 
 ---
 
-> Built with passion to empower careers using Artificial Intelligence.
+> Built to explore the future of AI-assisted developer learning.
