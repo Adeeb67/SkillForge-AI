@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getMe } from "@/lib/api";
+import { addXP } from "@/lib/api";
+
 
 export default function Dashboard() {
   const router = useRouter();
@@ -12,6 +14,13 @@ export default function Dashboard() {
     localStorage.removeItem("token");
     router.push("/");
   };
+const completeLesson = async () => {
+  const updated = await addXP(25);
+  setUser((prev: any) => ({
+    ...prev,
+    ...updated,
+  }));
+};
 
   useEffect(() => {
     async function loadUser() {
