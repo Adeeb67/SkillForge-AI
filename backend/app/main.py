@@ -91,3 +91,18 @@ def add_xp(
         "level": current_user.level,
         "lessons_completed": current_user.lessons_completed,
     }
+from .ai_service import generate_ai_response
+
+
+# ---------------- AI TUTOR ----------------
+@app.post("/ai-tutor")
+def ai_tutor(
+    question: str,
+    current_user: models.User = Depends(auth.get_current_user),
+):
+    answer = generate_ai_response(question)
+
+    return {
+        "question": question,
+        "answer": answer
+    }
