@@ -1,13 +1,22 @@
-export default function RootLayout({
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body style={{ margin: 0, fontFamily: "Inter, sans-serif" }}>
-        {children}
-      </body>
-    </html>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      router.push("/login");
+    }
+  }, []);
+
+  return <>{children}</>;
 }
