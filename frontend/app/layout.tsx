@@ -1,22 +1,29 @@
 "use client";
 
+import "./globals.css";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 
-export default function DashboardLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    if (!token) {
+    // protect ONLY dashboard routes
+    if (pathname.startsWith("/dashboard") && !token) {
       router.push("/login");
     }
-  }, []);
+  }, [pathname]);
 
-  return <>{children}</>;
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
 }
