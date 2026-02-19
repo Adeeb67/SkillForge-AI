@@ -1,4 +1,5 @@
-# 🚀 SkillForge AI
+# 🚀 SkillForge-AI — AI Career Intelligence Platform
+
 
 > AI-powered career intelligence platform for resume optimization, job role prediction, ATS analysis, and smart career assistance.
 > ![GitHub stars](https://img.shields.io/github/stars/Adeeb67/SkillForge-AI?style=for-the-badge)
@@ -10,80 +11,101 @@
 ![AI Powered](https://img.shields.io/badge/AI-Powered-purple?style=for-the-badge)
 
 
+> Transforming resumes into career insights using Artificial Intelligence.
+
+SkillForge-AI is a **full-stack AI-powered career intelligence platform** that analyzes resumes, evaluates ATS compatibility, predicts suitable job roles, and provides intelligent career guidance through modern AI systems and scalable web technologies.
+
 ---
 
 ## 🌟 Overview
 
-**SkillForge AI** is a full-stack AI career platform designed to help students and professionals improve their job readiness using artificial intelligence.
+SkillForge-AI helps students and professionals understand how real industry recruitment systems evaluate resumes.
+The platform simulates real-world hiring intelligence by combining **AI analysis + modern dashboard UI + interactive assistant**.
 
-The platform analyzes resumes, predicts career roles, evaluates ATS compatibility, and provides AI-powered career guidance through an interactive assistant.
+Users can:
 
-Built with modern production technologies and designed for scalability, contribution, and public deployment.
-
----
-
-## ✨ Features
-
-* 🤖 AI Career Assistant (Chat Interface)
-* 🎯 Role Prediction using AI
-* 📊 ATS Resume Match Analysis
-* 📄 Resume Analyzer & Scoring
-* 🧠 AI Resume Generator
-* 🔐 Authentication System
-* 📁 Resume Library Management
-* 💬 Floating AI Chat Widget
-* 🌙 Modern Dashboard UI
+* 📄 Upload and analyze resumes
+* 🤖 Interact with an AI Career Assistant
+* 📊 Generate ATS compatibility scores
+* 🎯 Predict suitable job roles
+* 💡 Receive career improvement suggestions
+* 🧠 Generate optimized resumes
 
 ---
 
-## 🧱 Tech Stack
+## ✨ Key Features
 
-### Frontend
+✅ Resume parsing & analysis
+✅ ATS (Applicant Tracking System) scoring
+✅ AI-based job role prediction
+✅ AI Career Assistant (Chat Interface)
+✅ Resume Generator & optimization
+✅ Resume library management
+✅ Authentication system
+✅ Floating AI chat widget
+✅ Modern responsive dashboard UI
+✅ Real-time frontend ↔ backend communication
 
-* Next.js 14 (App Router)
-* React + TypeScript
+---
+
+## 🧱 System Architecture
+
+```
+Frontend (React / Next.js)
+        │
+        │ REST API
+        ▼
+Backend (FastAPI)
+        │
+        ▼
+AI / NLP Processing Layer
+```
+
+---
+
+## 🛠 Tech Stack
+
+### 🔹 Frontend
+
+* React.js / Next.js
+* Vite / App Router
 * Tailwind CSS
-* Local Storage Auth Handling
+* TypeScript & JavaScript (ES6+)
+* Component-based UI architecture
 
-### Backend
+### 🔹 Backend
 
-* FastAPI
 * Python
+* FastAPI
+* Uvicorn
 * SQLite Database
 * REST API Architecture
 
-### AI Integration
+### 🔹 AI / Data Processing
 
-* LLM-based response generation
+* NLP-based resume analysis
+* LLM-powered responses
 * Career insight engine
 * Resume intelligence logic
-
----
-
-## 📸 Preview
-
-### Dashboard
-
-### AI Chat
-
-> Add screenshots inside `/docs` folder.
 
 ---
 
 ## 📂 Project Structure
 
 ```
-SkillForgeAI/
+SkillForge-AI/
 │
-├── backend/
+├── backend/              # FastAPI server & AI logic
 │   ├── app/
 │   └── requirements.txt
 │
-├── frontend/
-│   ├── app/
+├── frontend/             # React / Next.js application
+│   ├── src/ or app/
 │   ├── components/
 │   └── package.json
 │
+├── docs/                 # Screenshots & documentation
+├── .gitignore
 └── README.md
 ```
 
@@ -98,7 +120,7 @@ SkillForgeAI/
 
 ---
 
-## 🛠️ Installation & Setup
+## ⚙️ Local Setup Guide
 
 ### 1️⃣ Clone Repository
 
@@ -109,12 +131,15 @@ cd SkillForge-AI
 
 ---
 
-### 2️⃣ Backend Setup
+### 2️⃣ Backend Setup (FastAPI)
 
 ```bash
 cd backend
+
 python -m venv .venv
-.venv\Scripts\activate
+source .venv/bin/activate      # Mac/Linux
+.venv\Scripts\activate         # Windows
+
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
@@ -125,9 +150,17 @@ Backend runs at:
 http://127.0.0.1:8000
 ```
 
+API Docs:
+
+```
+http://127.0.0.1:8000/docs
+```
+
 ---
 
 ### 3️⃣ Frontend Setup
+
+Open a new terminal:
 
 ```bash
 cd frontend
@@ -138,16 +171,40 @@ npm run dev
 Frontend runs at:
 
 ```
-http://localhost:3000
+http://localhost:3000 or 5173
 ```
 
 ---
 
-## 🚨 Known Issues
+## 🔌 API Example
 
-* AI chat requires backend server running.
-* Missing environment variables may cause API failure.
-* First load may take longer due to model initialization.
+Example request:
+
+```http
+POST /analyze-resume
+```
+
+Example response:
+
+```json
+{
+  "ats_score": 82,
+  "recommended_role": "Data Analyst",
+  "suggestions": ["Add projects", "Improve keywords"]
+}
+```
+
+---
+
+## 📸 Demo (Add Screenshots Later)
+
+Add screenshots inside `/docs` folder:
+
+```
+/docs/dashboard.png
+/docs/ai-chat.png
+/docs/analysis-result.png
+```
 
 ---
 
@@ -161,14 +218,36 @@ http://localhost:3000
 
 ---
 
-## 🗺️ Roadmap
+## 🚨 Known Issues
 
-* Live deployment
-* Resume PDF export improvements
-* Multi-user cloud database
-* OAuth Login (Google/GitHub)
-* Real-time AI streaming responses
-* Docker support
+* AI chat requires backend server running.
+* Missing environment variables may cause API failure.
+* First load may take longer due to model initialization.
+
+---
+
+## 🚀 Future Improvements / Roadmap
+
+* 🔐 OAuth Login (Google/GitHub)
+* ☁️ Cloud deployment (AWS / Vercel)
+* 📊 Resume history dashboard
+* 🧠 Advanced ML models
+* 📈 Analytics visualization
+* ⚡ Real-time AI streaming responses
+* 🐳 Docker containerization
+
+---
+
+## 🎯 Learning Outcomes
+
+This project demonstrates:
+
+* Full-stack application development
+* REST API design
+* AI integration with web applications
+* Authentication & state management
+* Frontend–backend communication
+* Real-world software architecture
 
 ---
 
@@ -201,15 +280,16 @@ git push origin feature-name
 
 ## 📜 License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
 
 ---
 
 ## 👨‍💻 Author
 
-** Mohammed Adeeb**
+**Mohammed Adeeb**
+B.Tech CSE — AI & Software Development Enthusiast
 
-* GitHub: https://github.com/Adeeb67
+GitHub: https://github.com/Adeeb67
 
 ---
 
