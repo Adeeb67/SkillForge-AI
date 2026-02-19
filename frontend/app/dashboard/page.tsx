@@ -58,3 +58,16 @@ const completeLesson = async () => {
     </div>
   );
 }
+<button
+  onClick={completeLesson}
+  style={{
+    marginTop: 20,
+    padding: "10px 16px",
+    background: "green",
+    color: "white",
+    borderRadius: "6px",
+  }}
+>
+  Complete Lesson (+25 XP)
+</button>
+
