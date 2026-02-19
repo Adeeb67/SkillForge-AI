@@ -48,3 +48,20 @@ export async function addXP(amount: number) {
 
   return res.json();
 }
+export async function askAITutor(question: string) {
+  const token = localStorage.getItem("token");
+
+  const res = await fetch(
+    "http://127.0.0.1:8000/ai-tutor?question=" +
+      encodeURIComponent(question),
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return res.json();
+}
+
