@@ -106,3 +106,17 @@ def ai_tutor(
         "question": question,
         "answer": answer
     }
+from .debug_service import analyze_code
+
+
+# ---------------- SMART DEBUGGER ----------------
+@app.post("/debug-code")
+def debug_code(
+    code: str,
+    current_user: models.User = Depends(auth.get_current_user),
+):
+    result = analyze_code(code)
+
+    return {
+        "analysis": result
+    }
