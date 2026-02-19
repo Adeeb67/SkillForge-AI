@@ -4,16 +4,14 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { login } from "@/lib/api";
 
-export default function LoginPage() {
+export default function Login() {
   const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async () => {
-    setError("");
-
+  async function handleLogin() {
     const res = await login(email, password);
 
     if (res.access_token) {
@@ -22,7 +20,7 @@ export default function LoginPage() {
     } else {
       setError(res.detail || "Login failed");
     }
-  };
+  }
 
   return (
     <div style={{ padding: 40 }}>
@@ -32,16 +30,18 @@ export default function LoginPage() {
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        style={{ display: "block", marginBottom: 10 }}
       />
+
+      <br /><br />
 
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        style={{ display: "block", marginBottom: 10 }}
       />
+
+      <br /><br />
 
       <button onClick={handleLogin}>
         Login
