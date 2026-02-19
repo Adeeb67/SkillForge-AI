@@ -1,10 +1,3 @@
-import "./globals.css";
-
-export const metadata = {
-  title: "SkillForge AI",
-  description: "AI Career Assistant",
-};
-
 export default function RootLayout({
   children,
 }: {
@@ -12,7 +5,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body style={{ margin: 0, fontFamily: "Inter, sans-serif" }}>
         {children}
       </body>
     </html>
