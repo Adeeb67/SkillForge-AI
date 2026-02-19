@@ -58,3 +58,14 @@ def login(user: schemas.UserLogin, db: Session = Depends(get_db)):
     token = auth.create_access_token({"sub": db_user.email})
 
     return {"access_token": token, "token_type": "bearer"}
+    # ---------------- CURRENT USER ----------------
+@app.get("/me")
+def get_me(current_user: models.User = Depends(auth.get_current_user)):
+    return {
+        "email": current_user.email,
+        "xp": current_user.xp,
+        "level": current_user.level,
+        "lessons_completed": current_user.lessons_completed,
+        "streak": current_user.streak,
+    }
+
