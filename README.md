@@ -4,11 +4,11 @@
 
 <p align="center">
 
-![Next.js](https://img.shields.io/badge/Frontend-Next.js-black?style=for-the-badge\&logo=next.js)
-![React](https://img.shields.io/badge/Framework-React-blue?style=for-the-badge\&logo=react)
-![TailwindCSS](https://img.shields.io/badge/UI-TailwindCSS-38B2AC?style=for-the-badge\&logo=tailwind-css)
-![FastAPI](https://img.shields.io/badge/Backend-FastAPI-green?style=for-the-badge\&logo=fastapi)
-![Vercel](https://img.shields.io/badge/Deployment-Vercel-black?style=for-the-badge\&logo=vercel)
+![Next.js](https://img.shields.io/badge/Frontend-Next.js-black?style=for-the-badge&logo=next.js)
+![React](https://img.shields.io/badge/Framework-React-blue?style=for-the-badge&logo=react)
+![TailwindCSS](https://img.shields.io/badge/UI-TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css)
+![FastAPI](https://img.shields.io/badge/Backend-FastAPI-green?style=for-the-badge&logo=fastapi)
+![Vercel](https://img.shields.io/badge/Deployment-Vercel-black?style=for-the-badge&logo=vercel)
 ![License](https://img.shields.io/github/license/Adeeb67/SkillForge-AI?style=for-the-badge)
 
 </p>
@@ -17,38 +17,37 @@
 
 ## 🌐 Live Demo
 
-🚀 **Application**
-👉 https://skill-forge-ai-neon.vercel.app
+🚀 **Application (Production UI)**  
+👉 https://skillforge-ai.vercel.app
 
 ---
 
 ## 🧠 Project Overview
 
-**SkillForge** is an AI-powered developer learning environment designed to simulate a real-world coding growth ecosystem.
+**SkillForge** is a modern **AI-powered developer learning environment** designed to simulate a real-world coding growth ecosystem.
 
-The platform combines:
+Instead of traditional course platforms, SkillForge focuses on:
 
-* 📊 Gamified learning dashboard
-* 🧠 AI-assisted debugging workspace
-* 📚 Structured learning modules
-* 🏆 Progress tracking & streak system
-* ⚡ Interactive developer experience
+- Continuous learning workflows
+- Developer productivity simulation
+- Gamified progress tracking
+- Interactive dashboard experiences
 
-It focuses on **learning productivity**, **skill mastery**, and **developer workflow simulation** rather than static course consumption.
+The platform blends **learning + debugging + progress analytics** into a unified developer workspace.
 
 ---
 
 ## ✨ Core Features
 
-✅ Interactive Learning Dashboard
-✅ Skill Progress & XP Tracking
-✅ Daily Learning Streak System
-✅ Smart Debugger Workspace
-✅ Recommended Learning Modules
-✅ Modern Responsive UI
-✅ Component-Based Architecture
-✅ Real-time Frontend Experience
-✅ Production-style Project Structure
+✅ Interactive Learning Dashboard  
+✅ Skill Progress & XP Tracking  
+✅ Daily Learning Streak System  
+✅ Smart Debugger Workspace  
+✅ Recommended Learning Modules  
+✅ Modern Responsive UI  
+✅ Component-Based Architecture  
+✅ Real-time Frontend Experience  
+✅ Production-ready Next.js Structure  
 
 ---
 
@@ -57,12 +56,12 @@ It focuses on **learning productivity**, **skill mastery**, and **developer work
 ```
 Client (Next.js App Router)
         │
-        │ UI State & API Layer
+        │ UI State Management
         ▼
-Frontend Components (React + Tailwind)
+React Components + Tailwind UI
         │
         ▼
-Backend Services (FastAPI - optional extensions)
+Extensible Backend Layer (FastAPI Ready)
 ```
 
 ---
@@ -70,23 +69,20 @@ Backend Services (FastAPI - optional extensions)
 ## 🛠 Tech Stack
 
 ### 🔹 Frontend
-
-* Next.js 14 (App Router)
-* React
-* TypeScript
-* Tailwind CSS
-* Component-driven UI
+- Next.js 14 (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Component-driven architecture
 
 ### 🔹 Backend (Extensible)
-
-* FastAPI
-* Python
-* REST API Architecture
+- FastAPI
+- Python
+- REST API Design
 
 ### 🔹 Deployment
-
-* Vercel (Frontend Hosting)
-* GitHub (Version Control)
+- Vercel (Frontend Hosting)
+- GitHub (Version Control)
 
 ---
 
@@ -136,7 +132,7 @@ npm install
 npm run dev
 ```
 
-App runs at:
+Application runs at:
 
 ```
 http://localhost:3000
@@ -144,7 +140,7 @@ http://localhost:3000
 
 ---
 
-### 3️⃣ Backend (Optional)
+### 3️⃣ Backend (Optional Extension)
 
 ```bash
 cd backend
@@ -156,7 +152,7 @@ uvicorn app.main:app --reload
 
 ## 📸 Preview
 
-(Add later)
+(Add preview later)
 
 ```
 docs/preview.gif
@@ -173,7 +169,7 @@ Example:
 ## 🚀 Deployment
 
 | Layer      | Platform |
-| ---------- | -------- |
+|------------|----------|
 | Frontend   | Vercel   |
 | Backend    | FastAPI  |
 | Repository | GitHub   |
@@ -184,30 +180,30 @@ Example:
 
 SkillForge demonstrates:
 
-* Modern Frontend Engineering
-* Production UI Architecture
-* Scalable Project Structuring
-* Real-world Dashboard Design
-* Developer Experience Engineering
+- Modern Frontend Engineering
+- Production UI Architecture
+- Scalable Project Structuring
+- Real-world Dashboard Design
+- Developer Experience Engineering
 
-This project represents a **production-style learning platform**, not a simple UI clone.
+This project represents a **production-style learning platform**, not a static UI clone.
 
 ---
 
 ## 🔮 Future Enhancements
 
-* AI Coding Assistant Integration
-* Personalized Learning Paths
-* Live Code Execution Sandbox
-* Leaderboard System
-* Cloud Database Integration
+- AI Coding Assistant Integration
+- Personalized Learning Paths
+- Live Code Execution Sandbox
+- Leaderboard System
+- Cloud Database Integration
 
 ---
 
 ## 👨‍💻 Author
 
-**Mohammed Adeeb**
-B.Tech CSE — AI & Software Development Enthusiast
+**Mohammed Adeeb**  
+B.Tech CSE — AI & Software Development Enthusiast  
 
 GitHub: https://github.com/Adeeb67
 
@@ -217,9 +213,9 @@ GitHub: https://github.com/Adeeb67
 
 If you like this project:
 
-⭐ Star the repository
-🍴 Fork it
-💡 Share feedback
+⭐ Star the repository  
+🍴 Fork it  
+💡 Share feedback  
 
 ---
 
