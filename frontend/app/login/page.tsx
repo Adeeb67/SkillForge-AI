@@ -20,7 +20,7 @@ export default function LoginPage() {
       localStorage.setItem("token", res.access_token);
       router.push("/dashboard");
     } else {
-      setError(res.detail || "Invalid credentials");
+      setError(res.detail || "Login failed");
     }
   }
 
@@ -46,9 +46,7 @@ export default function LoginPage() {
 
         <br /><br />
 
-        <button type="submit">
-          Login
-        </button>
+        <button type="submit">Login</button>
       </form>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
