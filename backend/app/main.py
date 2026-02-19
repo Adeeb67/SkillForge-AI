@@ -69,3 +69,25 @@ def get_me(current_user: models.User = Depends(auth.get_current_user)):
         "streak": current_user.streak,
     }
 
+# ---------------- ADD XP ----------------
+@app.post("/add-xp")
+def add_xp(
+    amount: int,
+    current_user: models.User = Depends(auth.get_current_user),
+    db: Session = Depends(get_db),
+):
+    current_user.xp += amount
+
+    # Level system (every 100 XP = level up)
+    current_user.level = current_user.xp // 100 + 1
+
+    current_user.lessons_completed += 1
+
+    db.commit()
+    db.refresh(current_user)
+
+    return {
+        "xp": current_user.xp,
+        "level": current_user.level,
+        "lessons_completed": current_user.lessons_completed,
+    }
