@@ -7,7 +7,7 @@ EMAIL_PORT = int(os.environ.get("EMAIL_PORT", 587))
 EMAIL_USER = os.environ.get("EMAIL_USER")
 EMAIL_PASS = os.environ.get("EMAIL_PASS")
 
-# ✅ fallback added (VERY IMPORTANT)
+# ✅ Render environment variable
 FRONTEND_URL = os.environ.get(
     "FRONTEND_URL",
     "https://skillforge-ai.vercel.app"
@@ -16,6 +16,8 @@ FRONTEND_URL = os.environ.get(
 def send_reset_email(to_email: str, token: str):
 
     reset_link = f"{FRONTEND_URL}/reset-password/{token}"
+
+    print("RESET LINK:", reset_link)  # ✅ debug log
 
     msg = EmailMessage()
     msg["Subject"] = "Reset Your SkillForge AI Password"
