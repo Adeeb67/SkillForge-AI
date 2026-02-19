@@ -24,19 +24,22 @@ export default function AIChat() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ message: userMsg }),
-      });
+      const response = await fetch(
+        "https://skillforge-ai-y3ru.onrender.com/api/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: userMsg }),
+        }
+      );
 
       const data = await response.json();
 
       // simulate ChatGPT typing
       let aiText = "";
-      const fullText = data.reply;
+      const fullText = data.reply || "No response received.";
 
       for (let i = 0; i < fullText.length; i++) {
         aiText += fullText[i];
@@ -50,30 +53,17 @@ export default function AIChat() {
         });
       }
     } catch (err) {
-      // add empty AI message first
-setMessages(prev => [
-  ...prev,
-  { role: "ai", text: "" }
-]);
-
-let i = 0;
-const fullText = data.reply;
-
-const interval = setInterval(() => {
-  i++;
-
-  setMessages(prev => {
-    const updated = [...prev];
-    updated[updated.length - 1].text =
-      fullText.slice(0, i);
-    return updated;
-  });
-
-  if (i >= fullText.length) {
-    clearInterval(interval);
-  }
-}, 15); // typing speed (smaller = faster)
-
+      // ✅ FIX: do NOT use data here
+      setMessages((prev) => {
+        const updated = [...prev];
+        updated[updated.length - 1].text =
+          "⚠️ AI service unavailable. Please try again.";
+        return updated;
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // ================= UI =================
   return (
@@ -88,7 +78,7 @@ const interval = setInterval(() => {
 
       {open && (
         <div className="fixed bottom-24 right-6 w-[320px] h-[420px] bg-white rounded-xl shadow-xl flex flex-col overflow-hidden">
-
+          
           {/* HEADER */}
           <div className="bg-gradient-to-r from-purple-600 to-pink-500 text-white p-3 flex justify-between">
             <span>SkillForge AI</span>
