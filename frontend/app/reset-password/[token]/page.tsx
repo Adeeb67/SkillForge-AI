@@ -14,6 +14,7 @@ export default function ResetPassword() {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // ================= RESET PASSWORD =================
   const resetPassword = async () => {
     setError("");
 
@@ -29,32 +30,38 @@ export default function ResetPassword() {
 
     setLoading(true);
 
-   const res = await fetch(
-  "https://skillforge-ai-y3ru.onrender.com/api/chat",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ password }),
-  }
-);
+    try {
+      const res = await fetch(
+        `https://skillforge-ai-y3ru.onrender.com/api/reset-password/${token}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ password }),
+        }
+      );
 
+      const data = await res.json();
+      setLoading(false);
 
-    const data = await res.json();
-    setLoading(false);
+      if (!res.ok) {
+        setError(data.detail || "Reset failed");
+        return;
+      }
 
-    if (!res.ok) {
-      setError(data.detail);
-      return;
+      setSuccess(true);
+
+      // redirect to login after success
+      setTimeout(() => router.push("/login"), 2000);
+
+    } catch (err) {
+      setLoading(false);
+      setError("Server connection failed");
     }
-
-    localStorage.setItem("accessToken", data.access_token);
-    setSuccess(true);
-
-    setTimeout(() => router.push("/dashboard"), 2000);
   };
 
+  // ================= UI =================
   return (
     <main className="min-h-screen flex flex-col items-center justify-center
     bg-gradient-to-br from-purple-600 via-indigo-700 to-blue-900 text-white">
@@ -70,10 +77,11 @@ export default function ResetPassword() {
 
         {success ? (
           <p className="text-green-400 text-center">
-            ✅ Password reset successful! Redirecting...
+            ✅ Password reset successful! Redirecting to login...
           </p>
         ) : (
           <>
+            {/* PASSWORD */}
             <div className="relative">
               <input
                 type={show ? "text" : "password"}
@@ -91,6 +99,7 @@ export default function ResetPassword() {
               </span>
             </div>
 
+            {/* CONFIRM PASSWORD */}
             <input
               type={show ? "text" : "password"}
               placeholder="Confirm Password"
