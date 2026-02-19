@@ -1,6 +1,14 @@
 # 🚀 SkillForge AI
 
 > AI-powered career intelligence platform for resume optimization, job role prediction, ATS analysis, and smart career assistance.
+> ![GitHub stars](https://img.shields.io/github/stars/Adeeb67/SkillForge-AI?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/Adeeb67/SkillForge-AI?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/Adeeb67/SkillForge-AI?style=for-the-badge)
+![License](https://img.shields.io/github/license/Adeeb67/SkillForge-AI?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-FastAPI-blue?style=for-the-badge&logo=python)
+![React](https://img.shields.io/badge/Frontend-React-blue?style=for-the-badge&logo=react)
+![AI Powered](https://img.shields.io/badge/AI-Powered-purple?style=for-the-badge)
+
 
 ---
 
