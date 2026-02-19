@@ -9,60 +9,45 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleLogin = async () => {
-    if (!email || !password) {
-      alert("Please fill all fields");
-      return;
+    setError("");
+
+    const res = await login(email, password);
+
+    if (res.access_token) {
+      localStorage.setItem("token", res.access_token);
+      router.push("/dashboard");
+    } else {
+      setError(res.detail || "Login failed");
     }
-
-    setLoading(true);
-
-    try {
-      const data = await login(email, password);
-
-      if (data.access_token) {
-        localStorage.setItem("token", data.access_token);
-        router.push("/dashboard");
-      } else {
-        alert(data.detail || "Login failed");
-      }
-    } catch (error) {
-      alert("Server error");
-    }
-
-    setLoading(false);
   };
 
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="p-8 border rounded-xl w-96 shadow-lg">
-        <h1 className="text-2xl font-bold mb-6 text-center">
-          Login to SkillForge
-        </h1>
+    <div style={{ padding: 40 }}>
+      <h1>Login</h1>
 
-        <input
-          type="email"
-          placeholder="Email"
-          className="border w-full p-2 mb-4 rounded"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <input
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        style={{ display: "block", marginBottom: 10 }}
+      />
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="border w-full p-2 mb-4 rounded"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        style={{ display: "block", marginBottom: 10 }}
+      />
 
-        <button
-          onClick={handleLogin}
-          className="bg-black text-white w-full py-2 rounded"
-        >
-          {loading ? "Logging in..." : "Login"}
-        </button>
-      </div>
+      <button onClick={handleLogin}>
+        Login
+      </button>
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 }
