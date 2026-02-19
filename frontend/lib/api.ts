@@ -25,3 +25,14 @@ export async function login(email: string, password: string) {
   const data = await res.json();
   return data;
 }
+export async function getMe() {
+  const token = localStorage.getItem("token");
+
+  const res = await fetch("http://127.0.0.1:8000/me", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+}
