@@ -30,7 +30,9 @@ export default function ResetPassword() {
     setLoading(true);
 
     const res = await fetch(
-      `http://127.0.0.1:8000/reset-password/${token}`,
+    fetch("https://skillforge-ai-y3ru.onrender.com/api/chat")
+
+
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

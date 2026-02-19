@@ -13,7 +13,8 @@ export default function ResumeUpload() {
     formData.append("file", file);
 
     const res = await fetch(
-      "http://127.0.0.1:8000/api/upload-resume",
+     fetch("https://skillforge-ai-y3ru.onrender.com/api/chat"),
+
       {
         method: "POST",
         body: formData,
