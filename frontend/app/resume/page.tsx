@@ -9,19 +9,18 @@ export default function ResumeUpload() {
   const upload = async () => {
     if (!file) return;
 
-    const formData = new FormData();
-    formData.append("file", file);
+   const formData = new FormData();
+formData.append("file", file);
 
-    const res = await fetch(
+const res = await fetch(
   "https://skillforge-ai-y3ru.onrender.com/api/chat",
   {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ password }),
+    body: formData,
   }
 );
+
+
 
 
     const data = await res.json();
