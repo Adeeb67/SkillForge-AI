@@ -1,68 +1,46 @@
-"use client";
-
-import { ArrowRight } from "lucide-react";
-
-const courses = [1,2,3];
-
 export default function Recommended() {
+  const courses = [1,2,3];
+
   return (
     <div>
-
-      <h2 className="text-lg font-semibold text-gray-900 mb-1">
+      <h2 className="text-lg font-semibold mb-2">
         Recommended for You
       </h2>
 
-      <p className="text-gray-500 text-sm mb-5">
+      <p className="text-gray-500 mb-6">
         Based on your recent debugging patterns.
       </p>
 
       <div className="space-y-4">
-        {courses.map((c,i)=>(
+        {courses.map((c) => (
           <div
-            key={i}
+            key={c}
             className="
-            bg-gradient-to-r
-            from-gray-100
-            to-gray-200
-            rounded-2xl
-            p-6
-            flex justify-between items-center
-            hover:shadow-md
-            hover:scale-[1.01]
-            transition
-            cursor-pointer
-            "
+            group bg-white rounded-xl p-6 shadow-card
+            hover:shadow-lg transition
+            hover:border-indigo-300 border
+          "
           >
-
-            <div className="flex gap-4 items-center">
-
-              <div className="
-                w-10 h-10
-                rounded-full
-                bg-indigo-100
-                text-indigo-600
-                flex items-center justify-center
-                font-semibold
-              ">
-                {i+1}
-              </div>
-
+            <div className="flex justify-between items-center">
               <div>
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold group-hover:text-indigo-600 transition">
                   Advanced React Performance Optimization
                 </h3>
 
-                <p className="text-sm text-gray-500">
+                <p className="text-gray-500 text-sm">
                   Estimated time: 15 min • Difficulty: Hard
                 </p>
               </div>
+
+              <span className="text-gray-400 group-hover:text-indigo-600 transition">
+                →
+              </span>
             </div>
 
-            <ArrowRight className="text-gray-400"/>
+            <div className="mt-3 h-1 bg-gradient-to-r from-indigo-50 to-transparent rounded"/>
           </div>
         ))}
       </div>
-
     </div>
   );
 }
