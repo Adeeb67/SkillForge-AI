@@ -1,13 +1,24 @@
 "use client";
 
-import DashboardLayout from "@/components/DashboardLayout";
+import React from "react";
+import Sidebar from "./Sidebar";
 
-export default function Dashboard() {
+interface Props {
+  children: React.ReactNode;
+}
+
+export default function DashboardLayout({ children }: Props) {
   return (
-    <DashboardLayout>
-      <div style={{ padding: 40 }}>
-        ✅ Layout Working
+    <div className="flex min-h-screen bg-[#F6F7FB]">
+
+      {/* Sidebar */}
+      <Sidebar />
+
+      {/* Main Content */}
+      <div className="ml-64 w-full">
+        {children}
       </div>
-    </DashboardLayout>
+
+    </div>
   );
 }
