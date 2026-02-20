@@ -1,68 +1,93 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { signup } from "@/lib/api";
 
-export default function SignupPage() {
+export default function Signup() {
   const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const handleSignup = async () => {
-    if (!email || !password) {
-      alert("Fill all fields");
-      return;
-    }
+  async function handleSignup(e: any) {
+    e.preventDefault();
 
-    setLoading(true);
-
-    try {
-      const data = await signup(email, password);
-
-      if (data.access_token) {
-        localStorage.setItem("token", data.access_token);
-        router.push("/dashboard");
-      } else {
-        alert(data.detail || "Signup failed");
-      }
-    } catch {
-      alert("Server error");
-    }
-
-    setLoading(false);
-  };
+    await signup(email, password);
+    router.push("/login");
+  }
 
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="p-8 border rounded-xl w-96 shadow-lg">
-        <h1 className="text-2xl font-bold mb-6 text-center">
-          Create SkillForge Account
-        </h1>
+    <main className="min-h-screen flex items-center justify-center bg-[#F6F7FB]">
 
-        <input
-          type="email"
-          placeholder="Email"
-          className="border w-full p-2 mb-4 rounded"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <div className="
+        bg-white
+        rounded-2xl
+        shadow-lg
+        p-10
+        w-[420px]
+      ">
+        <div className="text-center mb-6">
+          <div className="text-indigo-600 text-3xl mb-2">✨</div>
+          <h2 className="text-2xl font-semibold">
+            Create an account
+          </h2>
+          <p className="text-gray-500 text-sm">
+            Start your adaptive learning journey today
+          </p>
+        </div>
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="border w-full p-2 mb-4 rounded"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <form onSubmit={handleSignup} className="space-y-4">
 
-        <button
-          onClick={handleSignup}
-          className="bg-black text-white w-full py-2 rounded"
-        >
-          {loading ? "Creating..." : "Sign Up"}
-        </button>
+          <div>
+            <label className="text-sm">Email</label>
+            <input
+              className="w-full mt-1 p-3 rounded-lg bg-gray-100"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div>
+            <label className="text-sm">Password</label>
+            <input
+              type="password"
+              className="w-full mt-1 p-3 rounded-lg bg-gray-100"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button
+            className="
+            w-full
+            bg-gradient-to-r
+            from-indigo-500
+            to-purple-500
+            text-white
+            py-3
+            rounded-lg
+            mt-4
+            hover:scale-[1.02]
+            transition
+          "
+          >
+            Create Account
+          </button>
+        </form>
+
+        <p className="text-center text-sm text-gray-500 mt-6">
+          Already have an account?{" "}
+          <span
+            onClick={() => router.push("/login")}
+            className="text-indigo-600 cursor-pointer"
+          >
+            Sign in
+          </span>
+        </p>
       </div>
-    </div>
+    </main>
   );
 }
