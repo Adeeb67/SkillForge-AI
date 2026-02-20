@@ -1,21 +1,29 @@
-export default function Leaderboard() {
+"use client";
 
+export default function Leaderboard() {
   const users = [
-    {name:"Sarah K.",xp:3200},
-    {name:"Mike Chen",xp:2950},
-    {name:"Alex Dev",xp:2450},
-    {name:"Jessica R.",xp:2100},
+    { rank: 1, name: "Sarah K.", xp: "3,200 XP" },
+    { rank: 2, name: "Mike Chen", xp: "2,950 XP" },
+    { rank: 3, name: "Alex Dev", xp: "2,450 XP" },
+    { rank: 4, name: "Jessica R.", xp: "2,100 XP" },
   ];
 
   return (
-    <div className="bg-white rounded-xl shadow-sm p-6">
-      <h2 className="font-semibold mb-4">Top Learners</h2>
+    <div className="bg-white rounded-xl p-6 shadow-sm">
+      <h2 className="text-lg font-semibold mb-4">
+        Top Learners
+      </h2>
 
       <div className="space-y-3">
-        {users.map((u,i)=>(
-          <div key={i} className="flex justify-between">
-            <span>{i+1}. {u.name}</span>
-            <span className="text-gray-500">{u.xp} XP</span>
+        {users.map((user) => (
+          <div
+            key={user.rank}
+            className="flex justify-between bg-gray-100 p-3 rounded-lg"
+          >
+            <span>
+              {user.rank}. {user.name}
+            </span>
+            <span className="text-gray-600">{user.xp}</span>
           </div>
         ))}
       </div>
