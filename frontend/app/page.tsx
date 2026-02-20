@@ -9,29 +9,56 @@ export default function LandingPage() {
   return (
     <div className="relative min-h-screen bg-[#F6F7FB] overflow-hidden">
 
-      {/* ---------- CINEMATIC BACKGROUND ---------- */}
+      {/* ================= CINEMATIC BACKGROUND ================= */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
 
-        {/* gradient glow */}
-        <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-indigo-400/30 blur-[120px] rounded-full animate-pulse" />
+        {/* glow orb 1 */}
+        <div className="
+          absolute top-[-220px] left-[-220px]
+          w-[520px] h-[520px]
+          bg-indigo-400/30
+          blur-[130px]
+          rounded-full
+          animate-pulse
+        "/>
 
-        <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-purple-400/30 blur-[120px] rounded-full animate-pulse" />
+        {/* glow orb 2 */}
+        <div className="
+          absolute bottom-[-220px] right-[-220px]
+          w-[520px] h-[520px]
+          bg-purple-400/30
+          blur-[130px]
+          rounded-full
+          animate-pulse
+        "/>
 
         {/* grid texture */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="
+          absolute inset-0
+          bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),
+          linear-gradient(to_bottom,#00000005_1px,transparent_1px)]
+          bg-[size:40px_40px]
+        "/>
       </div>
 
-      {/* ---------- NAVBAR ---------- */}
-      <nav className="fixed top-0 w-full backdrop-blur-md bg-white/70 border-b border-gray-200 z-50">
+      {/* ================= NAVBAR ================= */}
+      <nav className="
+        fixed top-0 w-full z-50
+        backdrop-blur-md
+        bg-white/70
+        border-b border-gray-200
+      ">
         <div className="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
 
-          <div className="flex items-center gap-2 font-semibold text-xl">
+          {/* Logo */}
+          <div className="flex items-center gap-2 text-lg font-semibold">
             <span className="text-indigo-600">✦</span>
             <span>
               Skill<span className="text-indigo-600">Forge</span> AI
             </span>
           </div>
 
+          {/* Actions */}
           <div className="flex items-center gap-6">
             <button
               onClick={() => router.push("/login")}
@@ -42,7 +69,7 @@ export default function LandingPage() {
 
             <button
               onClick={() => router.push("/signup")}
-              className="bg-indigo-600 text-white px-5 py-2 rounded-lg shadow-md hover:scale-105 transition"
+              className="btn-primary"
             >
               Get Started
             </button>
@@ -50,13 +77,13 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      {/* ---------- HERO ---------- */}
-      <section className="flex flex-col items-center justify-center text-center pt-40 px-6">
+      {/* ================= HERO ================= */}
+      <section className="flex flex-col items-center text-center pt-44 px-6">
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-sm text-gray-500 mb-6"
         >
           ● v1.0 Now Live
@@ -65,12 +92,18 @@ export default function LandingPage() {
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-6xl font-bold leading-tight text-gray-900 max-w-4xl"
+          transition={{ duration: 0.7 }}
+          className="
+            text-[56px]
+            font-semibold
+            leading-[64px]
+            text-gray-900
+            max-w-4xl
+          "
         >
           Master Coding with
           <br />
-          <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+          <span className="gradient-text">
             Adaptive Intelligence
           </span>
         </motion.h1>
@@ -78,49 +111,52 @@ export default function LandingPage() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="text-gray-600 mt-6 max-w-2xl text-lg"
+          transition={{ delay: 0.35 }}
+          className="
+            mt-6
+            max-w-2xl
+            text-[18px]
+            text-gray-600
+          "
         >
           The all-in-one platform that adapts to your learning style.
           Debug smarter, learn faster, and level up your dev career
           with gamified challenges.
         </motion.p>
 
-        {/* Buttons */}
+        {/* HERO BUTTONS */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 0.55 }}
           className="flex gap-4 mt-10"
         >
           <button
             onClick={() => router.push("/signup")}
-            className="
-            bg-gradient-to-r
-            from-indigo-500
-            to-purple-500
-            text-white
-            px-8 py-4
-            rounded-xl
-            shadow-lg
-            hover:scale-105
-            transition
-            "
+            className="btn-primary px-8 py-4 rounded-xl"
           >
             Start Learning Free →
           </button>
 
           <button
             onClick={() => router.push("/login")}
-            className="bg-white border px-8 py-4 rounded-xl hover:bg-gray-50 transition"
+            className="card px-8 py-4 rounded-xl"
           >
             View Demo
           </button>
         </motion.div>
       </section>
 
-      {/* ---------- FEATURE CARDS ---------- */}
-      <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 mt-32 px-6 pb-24">
+      {/* ================= FEATURES ================= */}
+      <section className="
+        max-w-6xl
+        mx-auto
+        grid md:grid-cols-3
+        gap-8
+        mt-32
+        px-6
+        pb-28
+      ">
 
         {[
           {
@@ -129,38 +165,42 @@ export default function LandingPage() {
           },
           {
             title: "Smart Debugger",
-            desc: "Paste code and get instant analysis and fixes.",
+            desc: "Paste code and get instant analysis with intelligent fixes.",
           },
           {
             title: "Gamified Growth",
-            desc: "Earn XP, badges and streaks while building projects.",
+            desc: "Earn XP, badges and streaks while building real projects.",
           },
-        ].map((f, i) => (
+        ].map((feature, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 36 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.2 }}
+            transition={{ delay: i * 0.18 }}
             className="
-            group
-            bg-white/70
-            backdrop-blur-lg
-            rounded-2xl
-            p-8
-            border
-            shadow-md
-            hover:shadow-xl
-            hover:-translate-y-1
-            transition
+              card
+              group
+              p-8
+              border
+              hover:border-indigo-300
+              backdrop-blur-lg
             "
           >
-            <h3 className="text-xl font-semibold mb-3 group-hover:text-indigo-600 transition">
-              {f.title}
+            <h3 className="
+              text-xl
+              font-semibold
+              mb-3
+              group-hover:text-indigo-600
+              transition
+            ">
+              {feature.title}
             </h3>
-            <p className="text-gray-600">{f.desc}</p>
+
+            <p>{feature.desc}</p>
           </motion.div>
         ))}
       </section>
+
     </div>
   );
 }
