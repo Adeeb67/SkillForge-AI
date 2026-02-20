@@ -23,29 +23,26 @@ export default function Dashboard() {
   useEffect(() => {
     async function load() {
       const data = await getMe();
-
       if (data.detail) router.push("/login");
       else setUser(data);
     }
     load();
   }, []);
 
-  /* ---------- LOADING STATE ---------- */
   if (!user)
     return (
-      <div className="min-h-screen bg-[#F6F7FB] p-10 text-gray-500 text-lg">
+      <div className="min-h-screen bg-[#F6F7FB] p-10 text-gray-500">
         Loading dashboard...
       </div>
     );
 
   return (
-    /* ✅ ADDED BACKGROUND HERE */
     <div className="min-h-screen bg-[#F6F7FB]">
       <DashboardLayout>
-        {/* ---------- TOP HEADER ---------- */}
+
         <Topbar logout={logout} />
 
-        {/* ---------- WELCOME + RESUME BUTTON ---------- */}
+        {/* HEADER */}
         <div className="flex justify-between items-center mb-10">
           <div>
             <h1 className="text-3xl font-semibold text-gray-900">
@@ -58,51 +55,41 @@ export default function Dashboard() {
             </p>
           </div>
 
-          {/* Resume Learning Button */}
+          {/* Resume Button */}
           <button
             className="
-              flex items-center gap-2
-              bg-gradient-to-r
-              from-indigo-500
-              to-purple-500
-              text-white
-              px-6 py-3
-              rounded-xl
-              shadow-md
-              hover:scale-[1.02]
-              transition
-            "
+            bg-gradient-to-r
+            from-indigo-500
+            to-purple-500
+            text-white
+            px-6 py-3
+            rounded-lg
+            shadow-md
+            hover:scale-105
+            transition
+          "
           >
             Resume Learning →
           </button>
         </div>
 
-        {/* ---------- STAT CARDS ---------- */}
+        {/* STAT CARDS */}
         <div className="grid grid-cols-4 gap-6 mb-12">
           <StatCard title="XP" value={user.xp} icon="xp" />
           <StatCard title="Level" value={user.level} icon="level" />
-          <StatCard
-            title="Lessons"
-            value={user.lessons_completed}
-            icon="lessons"
-          />
-          <StatCard
-            title="Streak"
-            value={`${user.streak} days`}
-            icon="streak"
-          />
+          <StatCard title="Lessons" value={user.lessons_completed} icon="lessons"/>
+          <StatCard title="Streak" value={`${user.streak} days`} icon="streak"/>
         </div>
 
-        {/* ---------- MAIN CONTENT GRID ---------- */}
+        {/* CONTENT */}
         <div className="grid grid-cols-3 gap-8">
-          {/* Recommended Courses */}
           <div className="col-span-2">
             <Recommended />
           </div>
 
-          {/* Leaderboard */}
           <Leaderboard />
         </div>
+
       </DashboardLayout>
     </div>
   );
