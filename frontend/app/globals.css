@@ -113,3 +113,27 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(99,102,241,.35);
 }
+:root {
+  --card-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  --card-hover: 0 10px 25px rgba(79,70,229,0.12);
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Glass animation */
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.7);
+}
+
+/* Smooth motion */
+.card-motion {
+  transition: all 0.25s ease;
+}
+
+.card-motion:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-hover);
+}
