@@ -1,129 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* ===============================
-   🎯 SKILLFORGE DESIGN SYSTEM
-================================ */
-
-:root {
-  --bg-main: #F6F7FB;
-  --card-bg: #ffffff;
-
-  --text-primary: #0f172a;
-  --text-secondary: #64748b;
-
-  --brand-indigo: #6366f1;
-  --brand-purple: #8b5cf6;
-
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 18px;
-  --radius-xl: 22px;
-
-  --shadow-card:
-    0 1px 2px rgba(0,0,0,0.04),
-    0 8px 24px rgba(15,23,42,0.06);
-
-  --shadow-hover:
-    0 12px 30px rgba(99,102,241,0.18);
+.gradient-text {
+  background: linear-gradient(90deg,#6366f1,#a855f7);
+  -webkit-background-clip: text;
+  color: transparent;
 }
-
-/* ===============================
-   BASE
-================================ */
-
-html,
-body {
-  background: var(--bg-main);
-  color: var(--text-primary);
-  font-feature-settings: "cv02","cv03","cv04","cv11";
-}
-
-body {
-  @apply antialiased font-sans;
-}
-
-/* ===============================
-   TYPOGRAPHY LOCK
-================================ */
-
-h1 {
-  font-size: 36px;
-  line-height: 44px;
-  font-weight: 600;
-}
-
-h2 {
-  font-size: 24px;
-  font-weight: 600;
-}
-
-p {
-  color: var(--text-secondary);
-}
-
-/* ===============================
-   CARD SYSTEM
-================================ */
-
-.card {
-  background: var(--card-bg);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  transition: all 0.25s ease;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* ===============================
-   BUTTON SYSTEM
-================================ */
 
 .btn-primary {
-  background: linear-gradient(
-    90deg,
-    var(--brand-indigo),
-    var(--brand-purple)
-  );
-  color: white;
-  border-radius: 12px;
-  padding: 12px 24px;
-  font-weight: 500;
-  transition: all .25s ease;
+  background: linear-gradient(90deg,#6366f1,#a855f7);
+  color:white;
+  padding:12px 20px;
+  border-radius:12px;
+  transition:0.25s;
 }
 
 .btn-primary:hover {
-  transform: scale(1.05);
-  box-shadow: var(--shadow-hover);
+  transform:scale(1.05);
 }
 
-/* ===============================
-   SIDEBAR ACTIVE
-================================ */
-
-.sidebar-active {
-  background: rgba(99,102,241,0.08);
-  color: var(--brand-indigo);
-  box-shadow: inset 3px 0 0 var(--brand-indigo);
-}
-
-/* ===============================
-   GRADIENT TEXT
-================================ */
-
-.gradient-text {
-  background: linear-gradient(90deg,#7c3aed,#6366f1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 .card {
-  transform-style: preserve-3d;
-}
-
-.card:hover {
-  transform: translateY(-4px) scale(1.01);
+  background:white;
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
 }
