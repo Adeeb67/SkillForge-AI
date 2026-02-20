@@ -1,9 +1,11 @@
 "use client";
 
+import DashboardLayout from "@/components/DashboardLayout";
+
 export default function Dashboard() {
   return (
-    <div style={{ padding: 40 }}>
-      ✅ Dashboard Loaded Successfully
-    </div>
+    <DashboardLayout>
+      <div>✅ Dashboard Loaded Successfully</div>
+    </DashboardLayout>
   );
 }
