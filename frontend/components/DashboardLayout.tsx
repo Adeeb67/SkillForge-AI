@@ -1,23 +1,27 @@
-"use client";
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 
-import Sidebar from "./Sidebar";
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
-export default function DashboardLayout({
+export const metadata: Metadata = {
+  title: "SkillForge AI",
+  description: "Adaptive AI Learning Platform",
+};
+
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen bg-[#F6F7FB]">
-
-      {/* SIDEBAR */}
-      <Sidebar />
-
-      {/* MAIN CONTENT AREA */}
-      <div className="flex-1 ml-64">
+    <html lang="en">
+      <body className={`${inter.variable} font-sans bg-[#F6F7FB] text-gray-900`}>
         {children}
-      </div>
-
-    </div>
+      </body>
+    </html>
   );
 }
