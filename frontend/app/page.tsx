@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import MagneticButton from "@/components/MagneticButton";
 
 export default function LandingPage() {
   const router = useRouter();
@@ -51,15 +52,23 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
 
           {/* Logo */}
-          <div className="flex items-center gap-2 text-lg font-semibold">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-2 text-lg font-semibold"
+          >
             <span className="text-indigo-600">✦</span>
             <span>
               Skill<span className="text-indigo-600">Forge</span> AI
             </span>
-          </div>
+          </motion.div>
 
           {/* Actions */}
-          <div className="flex items-center gap-6">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-6"
+          >
             <button
               onClick={() => router.push("/login")}
               className="text-gray-700 hover:text-indigo-600 transition"
@@ -67,13 +76,13 @@ export default function LandingPage() {
               Log in
             </button>
 
-            <button
+            <MagneticButton
               onClick={() => router.push("/signup")}
               className="btn-primary"
             >
               Get Started
-            </button>
-          </div>
+            </MagneticButton>
+          </motion.div>
         </div>
       </nav>
 
@@ -131,19 +140,19 @@ export default function LandingPage() {
           transition={{ delay: 0.55 }}
           className="flex gap-4 mt-10"
         >
-          <button
+          <MagneticButton
             onClick={() => router.push("/signup")}
             className="btn-primary px-8 py-4 rounded-xl"
           >
             Start Learning Free →
-          </button>
+          </MagneticButton>
 
-          <button
+          <MagneticButton
             onClick={() => router.push("/login")}
             className="card px-8 py-4 rounded-xl"
           >
             View Demo
-          </button>
+          </MagneticButton>
         </motion.div>
       </section>
 
@@ -157,7 +166,6 @@ export default function LandingPage() {
         px-6
         pb-28
       ">
-
         {[
           {
             title: "Adaptive Learning",
@@ -175,7 +183,8 @@ export default function LandingPage() {
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 36 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: i * 0.18 }}
             className="
               card
