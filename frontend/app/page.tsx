@@ -1,85 +1,88 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  return (
-    <main className="min-h-screen bg-gradient-to-br from-purple-700 via-indigo-800 to-black text-white">
+  const router = useRouter();
 
-      {/* HERO SECTION */}
-      <section className="flex flex-col items-center justify-center h-screen text-center px-6">
-        <h1 className="text-5xl font-bold mb-6">
-          🚀 SkillForge AI
+  return (
+    <main className="min-h-screen bg-[#F6F7FB]">
+
+      {/* NAVBAR */}
+      <nav className="flex justify-between items-center px-10 py-6">
+        <div className="flex items-center gap-2 font-semibold text-lg">
+          <span className="text-indigo-600">✨</span>
+          <span>SkillForge AI</span>
+        </div>
+
+        <div className="flex items-center gap-8 text-gray-600">
+          <button>Features</button>
+          <button>How it Works</button>
+          <button>Stories</button>
+
+          <button
+            onClick={() => router.push("/login")}
+            className="font-medium"
+          >
+            Log in
+          </button>
+
+          <button
+            onClick={() => router.push("/signup")}
+            className="bg-indigo-600 text-white px-5 py-2 rounded-lg shadow"
+          >
+            Get Started
+          </button>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <section className="text-center mt-24 px-6">
+
+        <p className="text-sm text-gray-500 mb-6">
+          ● v1.0 Now Live
+        </p>
+
+        <h1 className="text-6xl font-bold leading-tight">
+          Master Coding with
+          <br />
+          <span className="bg-gradient-to-r from-purple-500 to-indigo-600 text-transparent bg-clip-text">
+            Adaptive Intelligence
+          </span>
         </h1>
 
-        <p className="text-xl opacity-80 mb-8">
-          AI Powered Developer Learning Platform
+        <p className="text-gray-500 mt-6 max-w-2xl mx-auto text-lg">
+          The all-in-one platform that adapts to your learning style.
+          Debug smarter, learn faster, and level up your dev career.
         </p>
 
-        <div className="space-x-4">
-          <Link
-            href="/login"
-            className="px-6 py-3 bg-pink-600 rounded-xl hover:bg-pink-700 transition"
+        <div className="flex justify-center gap-4 mt-10">
+          <button
+            onClick={() => router.push("/signup")}
+            className="
+            bg-gradient-to-r
+            from-indigo-500
+            to-purple-500
+            text-white
+            px-8 py-4
+            rounded-xl
+            shadow-lg
+            hover:scale-105
+            transition
+          "
           >
-            Login
-          </Link>
+            Start Learning Free →
+          </button>
 
-          <Link
-            href="/signup"
-            className="px-6 py-3 bg-white text-black rounded-xl hover:bg-gray-200 transition"
+          <button
+            onClick={() => router.push("/signup")}
+            className="px-8 py-4 rounded-xl border bg-white"
           >
-            Sign Up
-          </Link>
-        </div>
-
-        {/* Scroll Navigation */}
-        <div className="mt-12 space-x-6 text-sm opacity-80">
-          <a href="#features">Features</a>
-          <a href="#how-it-works">How it Works</a>
-          <a href="#stories">Stories</a>
+            View Demo
+          </button>
         </div>
       </section>
 
-      {/* FEATURES SECTION */}
-      <section
-        id="features"
-        className="min-h-screen flex flex-col items-center justify-center text-center px-6"
-      >
-        <h2 className="text-4xl font-bold mb-6">Features</h2>
-
-        <p className="max-w-2xl opacity-80">
-          SkillForge AI helps developers learn smarter with AI tutors,
-          interactive coding challenges, debugging assistants, and
-          gamified learning progress.
-        </p>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section
-        id="how-it-works"
-        className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-black/20"
-      >
-        <h2 className="text-4xl font-bold mb-6">How It Works</h2>
-
-        <div className="max-w-2xl space-y-4 opacity-80">
-          <p>1️⃣ Sign up and create your learning profile.</p>
-          <p>2️⃣ Choose AI-powered learning modules.</p>
-          <p>3️⃣ Practice with real coding challenges.</p>
-          <p>4️⃣ Track progress and level up your skills.</p>
-        </div>
-      </section>
-
-      {/* STORIES */}
-      <section
-        id="stories"
-        className="min-h-screen flex flex-col items-center justify-center text-center px-6"
-      >
-        <h2 className="text-4xl font-bold mb-6">Success Stories</h2>
-
-        <p className="max-w-2xl opacity-80">
-          Thousands of learners improve their coding confidence using
-          SkillForge AI's adaptive learning and intelligent feedback
-          system.
-        </p>
-      </section>
     </main>
   );
 }
