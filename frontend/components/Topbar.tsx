@@ -1,36 +1,67 @@
 "use client";
 
-import { Bell, Flame, Star } from "lucide-react";
+import { Flame, Star, Bell } from "lucide-react";
 
-export default function Topbar({ logout }: any) {
+export default function Topbar({ logout }: { logout: () => void }) {
   return (
     <div className="flex justify-between items-center mb-10">
 
-      <p className="text-gray-500 font-medium">Dashboard</p>
+      {/* PAGE TITLE */}
+      <h2 className="text-gray-500 font-medium">Dashboard</h2>
 
+      {/* RIGHT SIDE */}
       <div className="flex items-center gap-4">
 
-        {/* streak */}
-        <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 text-orange-600 text-sm">
+        {/* STREAK BADGE */}
+        <div className="
+          flex items-center gap-2
+          bg-orange-50
+          text-orange-600
+          px-4 py-2
+          rounded-full
+          text-sm
+          font-medium
+        ">
           <Flame size={16} />
           12 Day Streak
         </div>
 
-        {/* xp */}
-        <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-50 text-yellow-600 text-sm">
+        {/* XP BADGE */}
+        <div className="
+          flex items-center gap-2
+          bg-yellow-50
+          text-yellow-700
+          px-4 py-2
+          rounded-full
+          text-sm
+          font-medium
+        ">
           <Star size={16} />
           2,450 XP
         </div>
 
-        <Bell className="text-gray-400" />
+        {/* NOTIFICATION */}
+        <button className="text-gray-500 hover:text-indigo-600 transition">
+          <Bell size={20} />
+        </button>
 
+        {/* LOGOUT */}
         <button
           onClick={logout}
-          className="bg-indigo-600 text-white px-5 py-2 rounded-lg shadow-md hover:bg-indigo-700 transition"
+          className="
+          bg-gradient-to-r
+          from-indigo-500
+          to-purple-500
+          text-white
+          px-5 py-2
+          rounded-xl
+          shadow-md
+          hover:scale-105
+          transition
+          "
         >
           Logout
         </button>
-
       </div>
     </div>
   );
