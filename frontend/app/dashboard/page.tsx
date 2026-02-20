@@ -9,78 +9,59 @@ export default function Dashboard() {
 
   const [user, setUser] = useState<any>(null);
   const [question, setQuestion] = useState("");
-  const [aiAnswer, setAiAnswer] = useState("");
+  const [answer, setAnswer] = useState("");
 
-  /* ---------------- LOGOUT ---------------- */
+  useEffect(() => {
+    async function load() {
+      const data = await getMe();
+
+      if (data.detail) router.push("/login");
+      else setUser(data);
+    }
+
+    load();
+  }, []);
+
   const logout = () => {
     localStorage.removeItem("token");
     router.push("/");
   };
 
-  /* ---------------- XP ---------------- */
   const completeLesson = async () => {
     const updated = await addXP(25);
-
-    setUser((prev: any) => ({
-      ...prev,
-      ...updated,
-    }));
+    setUser((prev: any) => ({ ...prev, ...updated }));
   };
 
-  /* ---------------- AI ---------------- */
   const askAI = async () => {
     if (!question) return;
-
     const res = await askAITutor(question);
-    setAiAnswer(res.answer);
+    setAnswer(res.answer);
   };
 
-  /* ---------------- LOAD USER ---------------- */
-  useEffect(() => {
-    async function loadUser() {
-      const data = await getMe();
-
-      if (data.detail) {
-        router.push("/login");
-      } else {
-        setUser(data);
-      }
-    }
-
-    loadUser();
-  }, []);
-
-  if (!user)
-    return (
-      <div className="h-screen flex items-center justify-center">
-        Loading...
-      </div>
-    );
-
-  /* ========================================================= */
+  if (!user) return <div className="p-10">Loading...</div>;
 
   return (
-    <div className="flex min-h-screen bg-[#f6f7fb] text-gray-800">
+    <div className="flex min-h-screen bg-[#f3f4f8]">
 
       {/* ================= SIDEBAR ================= */}
-      <aside className="w-64 bg-white border-r p-6 flex flex-col justify-between">
+      <aside className="w-64 bg-white border-r flex flex-col justify-between p-6">
 
         <div>
-          <h1 className="text-2xl font-bold mb-10 text-indigo-600">
+          <h1 className="text-2xl font-bold text-indigo-600 mb-10">
             SkillForge
           </h1>
 
-          <nav className="space-y-4">
-            <p className="font-medium text-indigo-600">Dashboard</p>
-            <p className="text-gray-500">Learning Studio</p>
-            <p className="text-gray-500">Smart Debugger</p>
-            <p className="text-gray-500">Challenges</p>
-            <p className="text-gray-500">Settings</p>
+          <nav className="space-y-5 text-gray-600">
+            <p className="text-indigo-600 font-medium">Dashboard</p>
+            <p>Learning Studio</p>
+            <p>Smart Debugger</p>
+            <p>Challenges</p>
+            <p>Settings</p>
           </nav>
         </div>
 
         <div className="text-sm text-gray-500">
-          <p className="font-semibold">{user.email}</p>
+          <p>{user.email}</p>
           <p>Level {user.level}</p>
         </div>
       </aside>
@@ -102,7 +83,7 @@ export default function Dashboard() {
 
           <button
             onClick={logout}
-            className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700"
+            className="bg-indigo-600 text-white px-6 py-2 rounded-lg"
           >
             Logout
           </button>
@@ -111,27 +92,27 @@ export default function Dashboard() {
         {/* ================= STATS ================= */}
         <div className="grid grid-cols-4 gap-6 mb-10">
 
-          <StatCard title="XP" value={user.xp} />
-          <StatCard title="Level" value={user.level} />
-          <StatCard title="Lessons" value={user.lessons_completed} />
-          <StatCard title="Streak" value={`${user.streak} days`} />
+          <Card title="XP" value={user.xp} />
+          <Card title="Level" value={user.level} />
+          <Card title="Lessons" value={user.lessons_completed} />
+          <Card title="Streak" value={`${user.streak} days`} />
 
         </div>
 
-        {/* ================= ACTION CARD ================= */}
-        <div className="bg-white rounded-2xl p-6 shadow mb-10">
+        {/* ================= PROGRESS ================= */}
+        <div className="bg-white rounded-xl shadow p-6 mb-8">
           <h3 className="font-semibold mb-4">Progress Action</h3>
 
           <button
             onClick={completeLesson}
-            className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600"
+            className="bg-green-500 text-white px-6 py-3 rounded-lg"
           >
             Complete Lesson (+25 XP)
           </button>
         </div>
 
-        {/* ================= AI TUTOR ================= */}
-        <div className="bg-white rounded-2xl p-6 shadow">
+        {/* ================= AI ================= */}
+        <div className="bg-white rounded-xl shadow p-6">
 
           <h3 className="font-semibold mb-4">AI Tutor 🤖</h3>
 
@@ -140,7 +121,7 @@ export default function Dashboard() {
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder="Ask anything about coding..."
-              className="flex-1 border rounded-lg p-3 outline-none"
+              className="flex-1 border rounded-lg p-3"
             />
 
             <button
@@ -151,9 +132,9 @@ export default function Dashboard() {
             </button>
           </div>
 
-          {aiAnswer && (
-            <div className="mt-6 bg-gray-100 p-4 rounded-lg">
-              <p className="whitespace-pre-line">{aiAnswer}</p>
+          {answer && (
+            <div className="mt-5 bg-gray-100 p-4 rounded-lg">
+              {answer}
             </div>
           )}
         </div>
@@ -163,12 +144,10 @@ export default function Dashboard() {
   );
 }
 
-/* ================= COMPONENT ================= */
-
-function StatCard({ title, value }: any) {
+function Card({ title, value }: any) {
   return (
-    <div className="bg-white rounded-2xl p-6 shadow">
-      <p className="text-gray-500 text-sm">{title}</p>
+    <div className="bg-white rounded-xl shadow p-6">
+      <p className="text-gray-500">{title}</p>
       <h3 className="text-2xl font-bold mt-2">{value}</h3>
     </div>
   );
