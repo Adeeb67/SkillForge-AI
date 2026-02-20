@@ -1,43 +1,78 @@
+"use client";
+
+import { ArrowRight } from "lucide-react";
+
 export default function Recommended() {
-  const courses = [1,2,3];
+  const courses = [
+    {
+      id: 1,
+      title: "Advanced React Performance Optimization",
+      time: "15 min",
+      difficulty: "Hard",
+    },
+    {
+      id: 2,
+      title: "Advanced React Performance Optimization",
+      time: "15 min",
+      difficulty: "Hard",
+    },
+    {
+      id: 3,
+      title: "Advanced React Performance Optimization",
+      time: "15 min",
+      difficulty: "Hard",
+    },
+  ];
 
   return (
-    <div>
-      <h2 className="text-lg font-semibold mb-2">
+    <div className="bg-white rounded-xl p-6 shadow-[var(--card-shadow)]">
+      {/* HEADER */}
+      <h2 className="text-lg font-semibold text-gray-900">
         Recommended for You
       </h2>
 
-      <p className="text-gray-500 mb-6">
+      <p className="text-gray-500 text-sm mb-6">
         Based on your recent debugging patterns.
       </p>
 
-      <div className="space-y-4">
-        {courses.map((c) => (
+      {/* COURSE LIST */}
+      <div className="space-y-5">
+        {courses.map((course) => (
           <div
-            key={c}
+            key={course.id}
             className="
-            group bg-white rounded-xl p-6 shadow-card
-            hover:shadow-lg transition
-            hover:border-indigo-300 border
-          "
+            group bg-white rounded-xl p-6
+            shadow-[var(--card-shadow)]
+            hover:shadow-lg
+            transition
+            border
+            hover:border-indigo-300
+            flex items-center justify-between
+            cursor-pointer
+            "
           >
-            <div className="flex justify-between items-center">
-              <div>
-                <h3 className="font-semibold group-hover:text-indigo-600 transition">
-                  Advanced React Performance Optimization
-                </h3>
-
-                <p className="text-gray-500 text-sm">
-                  Estimated time: 15 min • Difficulty: Hard
-                </p>
+            {/* LEFT SIDE */}
+            <div className="flex items-center gap-5">
+              {/* NUMBER BADGE */}
+              <div className="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center font-semibold">
+                {course.id}
               </div>
 
-              <span className="text-gray-400 group-hover:text-indigo-600 transition">
-                →
-              </span>
+              {/* TEXT */}
+              <div>
+                <h3 className="font-medium group-hover:text-indigo-600 transition">
+                  {course.title}
+                </h3>
+
+                <p className="text-sm text-gray-500 mt-1">
+                  Estimated time: {course.time} • Difficulty:{" "}
+                  {course.difficulty}
+                </p>
+              </div>
             </div>
 
-            <div className="mt-3 h-1 bg-gradient-to-r from-indigo-50 to-transparent rounded"/>
+            {/* RIGHT ARROW */}
+            <ArrowRight className="text-gray-400 group-hover:text-indigo-600 transition" />
           </div>
         ))}
       </div>
