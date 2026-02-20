@@ -1,24 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- FONT SYSTEM ---------- */
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* ---------- GRADIENT TEXT ---------- */
 .gradient-text {
   background: linear-gradient(90deg,#6366f1,#a855f7);
   -webkit-background-clip: text;
   color: transparent;
 }
 
+/* ---------- PRIMARY BUTTON ---------- */
 .btn-primary {
   background: linear-gradient(90deg,#6366f1,#a855f7);
   color:white;
-  padding:12px 20px;
+  padding:12px 22px;
   border-radius:12px;
-  transition:0.25s;
+  font-weight:500;
+  box-shadow:0 8px 20px rgba(99,102,241,0.25);
+  transition:all .25s ease;
 }
 
 .btn-primary:hover {
-  transform:scale(1.05);
+  transform:translateY(-2px) scale(1.03);
 }
 
+/* ---------- CARD SYSTEM ---------- */
 .card {
   background:white;
   border-radius:16px;
   padding:24px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+  border:1px solid #eef0f4;
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.05);
+  transition:all .25s ease;
+}
+
+.card:hover {
+  transform:translateY(-4px);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.08);
+}
+
+/* ---------- GLASS EFFECT ---------- */
+.glass {
+  background:rgba(255,255,255,0.6);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,0.4);
+}
+
+/* ---------- CINEMATIC BACKGROUND GRID ---------- */
+.bg-grid {
+  background-image:
+    linear-gradient(to right,#00000005 1px,transparent 1px),
+    linear-gradient(to bottom,#00000005 1px,transparent 1px);
+  background-size:40px 40px;
 }
