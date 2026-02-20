@@ -30,104 +30,60 @@ export default function Dashboard() {
     load();
   }, []);
 
-  /* ---------------- LOADING ---------------- */
   if (!user)
     return (
-      <div className="min-h-screen bg-[#F6F7FB] flex items-center justify-center text-gray-500 text-lg">
-        Loading dashboard...
+      <div className="ml-64 p-10 space-y-6 animate-pulse">
+        <div className="h-10 bg-gray-200 rounded w-1/3"></div>
+
+        <div className="grid grid-cols-4 gap-6">
+          {[1,2,3,4].map(i=>(
+            <div key={i} className="h-24 bg-gray-200 rounded-xl"/>
+          ))}
+        </div>
       </div>
     );
 
   return (
     <DashboardLayout>
-      {/* ✅ MAIN WRAPPER ADDED */}
       <main className="ml-64 w-full p-10 bg-[#F6F7FB] min-h-screen">
 
-        {/* ---------- TOPBAR ---------- */}
-        <Topbar logout={logout} />
+        <Topbar logout={logout}/>
 
-        {/* ---------- HEADER ---------- */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          initial={{opacity:0,y:20}}
+          animate={{opacity:1,y:0}}
           className="flex justify-between items-center mb-10"
         >
           <div>
             <h1 className="text-3xl font-semibold text-gray-900">
-              Welcome back{" "}
-              <span className="text-indigo-600">Developer</span>
+              Welcome back <span className="text-indigo-600">Developer</span>
             </h1>
-
             <p className="text-gray-500 mt-1">
               Keep building momentum 🚀
             </p>
           </div>
 
-          {/* Resume Learning */}
           <motion.button
-            whileHover={{ scale: 1.06 }}
-            whileTap={{ scale: 0.97 }}
-            className="
-            bg-gradient-to-r
-            from-indigo-500
-            to-purple-500
-            text-white
-            px-6 py-3
-            rounded-lg
-            shadow-md
-            backdrop-blur-md
-          "
+            whileHover={{scale:1.06}}
+            className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-3 rounded-lg shadow-md"
           >
             Resume Learning →
           </motion.button>
         </motion.div>
 
-        {/* ---------- STAT CARDS ---------- */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.15 }}
-          className="grid grid-cols-4 gap-6 mb-12"
-        >
-          <motion.div whileHover={{ y: -6 }}>
-            <StatCard title="XP" value={user.xp} icon="xp" />
-          </motion.div>
+        <div className="grid grid-cols-4 gap-6 mb-12">
+          <StatCard title="XP" value={user.xp} icon="xp"/>
+          <StatCard title="Level" value={user.level} icon="level"/>
+          <StatCard title="Lessons" value={user.lessons_completed} icon="lessons"/>
+          <StatCard title="Streak" value={`${user.streak} days`} icon="streak"/>
+        </div>
 
-          <motion.div whileHover={{ y: -6 }}>
-            <StatCard title="Level" value={user.level} icon="level" />
-          </motion.div>
-
-          <motion.div whileHover={{ y: -6 }}>
-            <StatCard
-              title="Lessons"
-              value={user.lessons_completed}
-              icon="lessons"
-            />
-          </motion.div>
-
-          <motion.div whileHover={{ y: -6 }}>
-            <StatCard
-              title="Streak"
-              value={`${user.streak} days`}
-              icon="streak"
-            />
-          </motion.div>
-        </motion.div>
-
-        {/* ---------- CONTENT GRID ---------- */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
-          className="grid grid-cols-3 gap-8"
-        >
+        <div className="grid grid-cols-3 gap-8">
           <div className="col-span-2">
-            <Recommended />
+            <Recommended/>
           </div>
-
-          <Leaderboard />
-        </motion.div>
+          <Leaderboard/>
+        </div>
 
       </main>
     </DashboardLayout>
