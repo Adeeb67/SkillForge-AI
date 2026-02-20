@@ -137,3 +137,6 @@ body {
   transform: translateY(-3px);
   box-shadow: var(--card-hover);
 }
+:root {
+  --card-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
