@@ -1,128 +1,88 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 
-import DashboardLayout from "@/components/DashboardLayout";
-import Topbar from "@/components/Topbar";
-import StatCard from "@/components/StatCard";
-import Recommended from "@/components/Recommended";
-import Leaderboard from "@/components/Leaderboard";
-import DemoBanner from "@/components/DemoBanner";
-
-import { getMe } from "@/lib/api";
-
-export default function Dashboard() {
+export default function Home() {
   const router = useRouter();
-  const [user, setUser] = useState<any>(null);
-
-  const logout = () => {
-    localStorage.removeItem("token");
-    router.push("/");
-  };
-
-  useEffect(() => {
-    async function load() {
-      const token = localStorage.getItem("token");
-
-      /* DEMO MODE USER */
-      if (token === "skillforge-demo-user") {
-        setUser({
-          email: "demo@skillforge.ai",
-          xp: 2450,
-          level: 12,
-          lessons_completed: 34,
-          streak: 12,
-        });
-        return;
-      }
-
-      const data = await getMe();
-
-      if (data.detail) router.push("/login");
-      else setUser(data);
-    }
-
-    load();
-  }, []);
-
-  if (!user)
-    return (
-      <div className="ml-64 p-10 space-y-6 animate-pulse">
-        <div className="h-10 bg-gray-200 rounded w-1/3"></div>
-
-        <div className="grid grid-cols-4 gap-6">
-          {[1,2,3,4].map(i=>(
-            <div key={i} className="h-24 bg-gray-200 rounded-xl"/>
-          ))}
-        </div>
-      </div>
-    );
 
   return (
-    <DashboardLayout>
+    <main className="min-h-screen bg-[#F6F7FB]">
 
-      <DemoBanner />
+      {/* NAVBAR */}
+      <nav className="flex justify-between items-center px-10 py-6">
+        <div className="flex items-center gap-2 font-semibold text-lg">
+          <span className="text-indigo-600">✨</span>
+          <span>SkillForge AI</span>
+        </div>
 
-      <main className="ml-64 w-full p-10 bg-[#F6F7FB] min-h-screen">
+        <div className="flex items-center gap-8 text-gray-600">
+          <button>Features</button>
+          <button>How it Works</button>
+          <button>Stories</button>
 
-        <Topbar logout={logout}/>
+          <button
+            onClick={() => router.push("/login")}
+            className="font-medium"
+          >
+            Log in
+          </button>
 
-        {/* HEADER */}
-        <motion.div
-          initial={{opacity:0,y:20}}
-          animate={{opacity:1,y:0}}
-          className="flex justify-between items-center mb-10"
-        >
-          <div>
-            <h1 className="text-3xl font-semibold text-gray-900">
-              Welcome back <span className="text-indigo-600">Developer</span>
-            </h1>
+          <button
+            onClick={() => router.push("/signup")}
+            className="bg-indigo-600 text-white px-5 py-2 rounded-lg shadow"
+          >
+            Get Started
+          </button>
+        </div>
+      </nav>
 
-            <p className="text-gray-500 mt-1">
-              Keep building momentum 🚀
-            </p>
-          </div>
+      {/* HERO */}
+      <section className="text-center mt-24 px-6">
 
-          <motion.button
-            whileHover={{scale:1.06}}
+        <p className="text-sm text-gray-500 mb-6">
+          ● v1.0 Now Live
+        </p>
+
+        <h1 className="text-6xl font-bold leading-tight">
+          Master Coding with
+          <br />
+          <span className="bg-gradient-to-r from-purple-500 to-indigo-600 text-transparent bg-clip-text">
+            Adaptive Intelligence
+          </span>
+        </h1>
+
+        <p className="text-gray-500 mt-6 max-w-2xl mx-auto text-lg">
+          The all-in-one platform that adapts to your learning style.
+          Debug smarter, learn faster, and level up your dev career.
+        </p>
+
+        <div className="flex justify-center gap-4 mt-10">
+          <button
+            onClick={() => router.push("/signup")}
             className="
-            resume-btn
             bg-gradient-to-r
             from-indigo-500
             to-purple-500
             text-white
-            px-6 py-3
-            rounded-lg
-            shadow-md
-            "
+            px-8 py-4
+            rounded-xl
+            shadow-lg
+            hover:scale-105
+            transition
+          "
           >
-            Resume Learning →
-          </motion.button>
-        </motion.div>
+            Start Learning Free →
+          </button>
 
-        {/* STATS */}
-        <div className="stat-cards grid grid-cols-4 gap-6 mb-12">
-          <StatCard title="XP" value={user.xp} icon="xp"/>
-          <StatCard title="Level" value={user.level} icon="level"/>
-          <StatCard title="Lessons" value={user.lessons_completed} icon="lessons"/>
-          <StatCard title="Streak" value={`${user.streak} days`} icon="streak"/>
+          <button
+            onClick={() => router.push("/signup")}
+            className="px-8 py-4 rounded-xl border bg-white"
+          >
+            View Demo
+          </button>
         </div>
+      </section>
 
-        {/* CONTENT */}
-        <div className="grid grid-cols-3 gap-8">
-          <div className="recommended-section col-span-2">
-            <Recommended/>
-          </div>
-
-          <div className="leaderboard-section">
-            <Leaderboard/>
-          </div>
-        </div>
-
-      </main>
-    </DashboardLayout>
+    </main>
   );
 }
-
