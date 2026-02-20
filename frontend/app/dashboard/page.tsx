@@ -45,72 +45,82 @@ export default function Dashboard() {
     loadUser();
   }, []);
 
-  if (!user) return <p style={{ padding: 40 }}>Loading...</p>;
+  // Loading state
+  if (!user)
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white bg-gradient-to-br from-purple-700 to-indigo-700">
+        Loading...
+      </div>
+    );
 
   return (
-    <div style={{ padding: 40 }}>
-      {/* HEADER */}
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <h1>Welcome Back 👋</h1>
-        <button onClick={logout}>Logout</button>
+    <main className="min-h-screen bg-gradient-to-br from-purple-700 to-indigo-700 text-white p-8">
+      <div className="max-w-5xl mx-auto">
+
+        {/* HEADER */}
+        <div className="flex justify-between items-center mb-10">
+          <div>
+            <h1 className="text-3xl font-bold">Welcome Back 👋</h1>
+            <p className="opacity-80">Email: {user.email}</p>
+          </div>
+
+          <button
+            onClick={logout}
+            className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg transition"
+          >
+            Logout
+          </button>
+        </div>
+
+        {/* PROGRESS CARD */}
+        <div className="bg-black/30 backdrop-blur-md p-6 rounded-2xl mb-8 shadow-lg">
+          <h2 className="text-xl font-semibold mb-4">Your Progress</h2>
+
+          <ul className="space-y-2">
+            <li>XP: {user.xp}</li>
+            <li>Level: {user.level}</li>
+            <li>Lessons Completed: {user.lessons_completed}</li>
+            <li>Streak: {user.streak} days</li>
+          </ul>
+
+          <button
+            onClick={completeLesson}
+            className="mt-5 bg-green-500 hover:bg-green-600 px-5 py-2 rounded-lg transition"
+          >
+            Complete Lesson (+25 XP)
+          </button>
+        </div>
+
+        {/* AI TUTOR */}
+        <div className="bg-black/30 backdrop-blur-md p-6 rounded-2xl shadow-lg">
+          <h2 className="text-xl font-semibold mb-4">AI Tutor 🤖</h2>
+
+          <div className="flex gap-3">
+            <input
+              placeholder="Ask a coding question..."
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              className="flex-1 p-3 rounded-lg bg-black/40 border border-white/20 outline-none"
+            />
+
+            <button
+              onClick={askAI}
+              className="bg-pink-600 hover:bg-pink-700 px-5 rounded-lg transition"
+            >
+              Ask AI
+            </button>
+          </div>
+
+          {aiAnswer && (
+            <div className="mt-6 bg-black/40 p-4 rounded-lg">
+              <p className="whitespace-pre-line opacity-90">
+                {aiAnswer}
+              </p>
+            </div>
+          )}
+        </div>
+
       </div>
-
-      {/* USER INFO */}
-      <p>Email: {user.email}</p>
-
-      {/* PROGRESS */}
-      <h3 style={{ marginTop: 20 }}>Your Progress</h3>
-
-      <ul>
-        <li>XP: {user.xp}</li>
-        <li>Level: {user.level}</li>
-        <li>Lessons Completed: {user.lessons_completed}</li>
-        <li>Streak: {user.streak} days</li>
-      </ul>
-
-      {/* XP BUTTON */}
-      <button
-        onClick={completeLesson}
-        style={{
-          marginTop: 20,
-          padding: "10px 16px",
-          background: "green",
-          color: "white",
-          borderRadius: "6px",
-        }}
-      >
-        Complete Lesson (+25 XP)
-      </button>
-
-      {/* AI TUTOR */}
-      <div style={{ marginTop: 40 }}>
-        <h3>AI Tutor 🤖</h3>
-
-        <input
-          placeholder="Ask a coding question..."
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          style={{ padding: 8, width: 300 }}
-        />
-
-        <button
-          onClick={askAI}
-          style={{
-            marginLeft: 10,
-            padding: "8px 12px",
-            background: "purple",
-            color: "white",
-          }}
-        >
-          Ask AI
-        </button>
-
-        {aiAnswer && (
-          <p style={{ marginTop: 20, whiteSpace: "pre-line" }}>
-            {aiAnswer}
-          </p>
-        )}
-      </div>
-    </div>
+    </main>
   );
 }
