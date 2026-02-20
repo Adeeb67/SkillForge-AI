@@ -120,3 +120,10 @@ p {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.card {
+  transform-style: preserve-3d;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+}
