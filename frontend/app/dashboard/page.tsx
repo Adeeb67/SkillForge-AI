@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
+import PageWrapper from "@/components/PageWrapper";
 import DashboardLayout from "@/components/DashboardLayout";
 import Topbar from "@/components/Topbar";
 import StatCard from "@/components/StatCard";
@@ -41,7 +41,10 @@ export default function Dashboard() {
   /* ---------- LOADING SKELETON ---------- */
   if (!user) {
     return (
-      <DashboardLayout>
+  <DashboardLayout>
+    <PageWrapper>
+      <main className="ml-64 w-full min-h-screen bg-[#F6F7FB] p-10">
+      
         <div className="p-10 animate-pulse space-y-6">
           <div className="h-10 w-72 bg-gray-200 rounded-xl" />
           <div className="grid grid-cols-4 gap-6">
@@ -50,10 +53,11 @@ export default function Dashboard() {
             ))}
           </div>
         </div>
-      </DashboardLayout>
-    );
-  }
-
+              </main>
+    </PageWrapper>
+  </DashboardLayout>
+);
+ 
   return (
     <DashboardLayout>
       <div className="p-10">
