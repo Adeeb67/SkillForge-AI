@@ -3,64 +3,103 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import Sidebar from "@/components/Sidebar";
+import DashboardLayout from "@/components/DashboardLayout";
 import Topbar from "@/components/Topbar";
 import StatCard from "@/components/StatCard";
 import Recommended from "@/components/Recommended";
 import Leaderboard from "@/components/Leaderboard";
 
-import { getMe, addXP } from "@/lib/api";
+import { getMe } from "@/lib/api";
 
 export default function Dashboard() {
   const router = useRouter();
-  const [user,setUser]=useState<any>(null);
+  const [user, setUser] = useState<any>(null);
 
-  const logout=()=>{
+  const logout = () => {
     localStorage.removeItem("token");
     router.push("/");
   };
 
-  useEffect(()=>{
-    async function load(){
-      const data=await getMe();
-      if(data.detail) router.push("/login");
+  useEffect(() => {
+    async function load() {
+      const data = await getMe();
+
+      if (data.detail) router.push("/login");
       else setUser(data);
     }
     load();
-  },[]);
+  }, []);
 
-  if(!user) return <p className="p-10">Loading...</p>;
+  if (!user)
+    return (
+      <div className="p-10 text-gray-500 text-lg">
+        Loading dashboard...
+      </div>
+    );
 
   return (
-    <div className="flex bg-[#F3F4F8] min-h-screen">
+    <DashboardLayout>
+      {/* ---------- TOP HEADER ---------- */}
+      <Topbar logout={logout} />
 
-      <Sidebar/>
+      {/* ---------- WELCOME + RESUME BUTTON ---------- */}
+      <div className="flex justify-between items-center mb-10">
+        <div>
+          <h1 className="text-3xl font-semibold text-gray-900">
+            Welcome back,{" "}
+            <span className="text-indigo-600">Developer</span>
+          </h1>
 
-      <main className="ml-64 w-full p-10">
-
-        <Topbar logout={logout}/>
-
-        {/* STATS */}
-        <div className="grid grid-cols-4 gap-6 mb-10">
-          <StatCard title="XP" value={user.xp}/>
-          <StatCard title="Level" value={user.level}/>
-          <StatCard title="Lessons" value={user.lessons_completed}/>
-          <StatCard title="Streak" value={`${user.streak} days`}/>
+          <p className="text-gray-500 mt-1">
+            Keep building momentum 🚀
+          </p>
         </div>
 
-        {/* MAIN GRID */}
-        <div className="grid grid-cols-3 gap-8">
+        {/* Resume Learning Button */}
+        <button
+          className="
+          flex items-center gap-2
+          bg-gradient-to-r
+          from-indigo-500
+          to-purple-500
+          text-white
+          px-6 py-3
+          rounded-xl
+          shadow-md
+          hover:scale-[1.02]
+          transition
+        "
+        >
+          Resume Learning →
+        </button>
+      </div>
 
-          <div className="col-span-2">
-            <Recommended/>
-          </div>
+      {/* ---------- STAT CARDS ---------- */}
+      <div className="grid grid-cols-4 gap-6 mb-12">
+        <StatCard title="XP" value={user.xp} icon="xp" />
+        <StatCard title="Level" value={user.level} icon="level" />
+        <StatCard
+          title="Lessons"
+          value={user.lessons_completed}
+          icon="lessons"
+        />
+        <StatCard
+          title="Streak"
+          value={`${user.streak} days`}
+          icon="streak"
+        />
+      </div>
 
-          <Leaderboard/>
-
+      {/* ---------- MAIN CONTENT GRID ---------- */}
+      <div className="grid grid-cols-3 gap-8">
+        {/* Recommended Courses */}
+        <div className="col-span-2">
+          <Recommended />
         </div>
 
-      </main>
-
-    </div>
+        {/* Leaderboard */}
+        <Leaderboard />
+      </div>
+    </DashboardLayout>
   );
 }
