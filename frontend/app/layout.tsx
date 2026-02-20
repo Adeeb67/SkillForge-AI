@@ -1,13 +1,10 @@
-"use client";
-
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-sans",
+  display: "swap",
 });
 
 export default function RootLayout({
@@ -15,20 +12,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
-  const router = useRouter();
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (pathname.startsWith("/dashboard") && !token) {
-      router.push("/login");
-    }
-  }, [pathname]);
-
   return (
-    <html lang="en">
-      <body className={`${inter.variable} font-sans bg-[#F6F7FB]`}>
+    <html lang="en" className={inter.variable}>
+      <body className="font-sans antialiased">
         {children}
       </body>
     </html>
