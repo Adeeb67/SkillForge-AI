@@ -140,3 +140,15 @@ body {
 :root {
   --card-shadow: 0 8px 24px rgba(0,0,0,0.06);
 }
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #F6F7FB;
+}
+
+::selection {
+  background: #6366f1;
+  color: white;
+}
